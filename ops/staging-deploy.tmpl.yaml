@@ -34,7 +34,6 @@ env:
     DB_PASSWORD: $DB_PASSWORD
     DB_PORT: 3306
     DB_USERNAME: omeka
-    MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
     NAME: omeka
 
 mariadb:
