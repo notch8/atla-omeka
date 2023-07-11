@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      target: web
+    env_file:
+      - .env
+    environment:
+      - DB_HOST=mariadb
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 80:80
+    depends_on:
+      - mariadb
+
+  db_admin:
+    image: phpmyadmin/phpmyadmin
+    platform: linux/amd64
+    ports:
+      - 8080:80
+    env_file:
+      - .env
+    environment:
+      - PMA_HOST=mariadb
+      - PMA_PORT=3306
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:latest
+    env_file:
+      - .env
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+      # - ./omeka.sql:./omeka.sql
+
+volumes:
+  db_data:
+  omeka-exhibitions:
