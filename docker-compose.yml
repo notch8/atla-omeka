@@ -13,6 +13,7 @@ services:
       - DB_NAME=${DB_NAME}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_USERNAME=${DB_USERNAME}
+      - DB_PORT=${DB_PORT}
     volumes:
       - ./:/var/www/html
     ports:
@@ -29,7 +30,7 @@ services:
       - .env
     environment:
       - PMA_HOST=${DB_HOST}
-      - PMA_PORT=${PMA_PORT}
+      - PMA_PORT=${DB_PORT}
     depends_on:
       - mariadb
 
@@ -40,7 +41,7 @@ services:
     environment:
       - MYSQL_DATABASE=${DB_NAME}
       - MYSQL_PASSWORD=${DB_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_USER=${DB_USERNAME}
     volumes:
       - db_data:/var/lib/mysql
