@@ -1,5 +1,5 @@
 # Root .htaccess
-/.htaccess
+# /.htaccess
 
 # php-cs-fixer cache
 /.php_cs.cache
@@ -11,11 +11,11 @@
 /vendor/
 
 # Composer lockfile
-/composer.lock
+# /composer.lock
 
 # Config files
-/db.ini
-/application/config/config.ini
+# /db.ini
+# /application/config/config.ini
 /application/tests/config.ini
 /application/tests/.phpunit.result.cache
 
@@ -48,3 +48,4 @@
 omeka.sql
 
 .env.*
+*deploy.yaml

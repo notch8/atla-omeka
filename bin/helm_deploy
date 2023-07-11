@@ -1,0 +1,47 @@
+#!/bin/bash
+
+if [ -z "$1" ] || [ -z "$2" ]
+then
+    echo './bin/helm_deploy RELEASE_NAME NAMESPACE'
+    exit 1
+fi
+release_name="${1}"
+namespace="${2}"
+
+DEPLOY_IMAGE="${DEPLOY_IMAGE:-ghcr.io/scientist-softserv/atla-omeka}"
+DEPLOY_TAG="${DEPLOY_TAG:-latest}"
+
+environment=staging
+deploy_file="${environment}-deploy"
+
+ENV_FILE="./.env.${environment}"
+
+if [ ! -f "$ENV_FILE" ]; then
+  touch "./.env.${environment}"
+  echo "$ENCODED_ENV_FILE" | base64 -d > "./.env.${environment}"
+else
+  HELM_EXTRA_ARGS="--values ops/${deploy_file}.yaml"
+  DEPLOY_TAG=0adf4c8f
+  # DRY_RUN_DEBUG="--dry-run --debug"
+fi
+
+# Take the env file and export each key value pair
+# so we can use it with envsubst in our deploy
+while IFS='=' read -r key value; do
+  export "$key=${value//\"/}"
+done < <(grep -v '^#' "$ENV_FILE")
+
+DOLLAR=$ envsubst <"ops/${deploy_file}.tmpl.yaml" >"ops/${deploy_file}.yaml"
+
+helm upgrade \
+    --install \
+    --atomic \
+    --timeout 15m0s \
+    --set rails.image.repository="$DEPLOY_IMAGE" \
+    --set rails.image.tag="$DEPLOY_TAG" \
+    $HELM_EXTRA_ARGS \
+    $DRY_RUN_DEBUG \
+    --namespace="$namespace" \
+    --create-namespace \
+    "$release_name" \
+    chart

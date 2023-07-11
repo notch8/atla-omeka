@@ -1,0 +1,51 @@
+# Customize the following values as needed
+
+web:
+  replicas: 1
+
+php:
+  image:
+    repository: ghcr.io/scientist-softserv/atla-omeka
+    tag: latest
+  # If using a private registry setup access via secrets
+  imagePullPolicy: IfNotPresent
+  imagePullSecrets:
+    - name: github
+  shared:
+    storage:
+      size: 20Gi
+      className: nfs
+
+ingress:
+  enabled: true
+  hosts:
+    - atla-omeka-staging.notch8.cloud
+  annotations: {
+    kubernetes.io/ingress.class: "nginx",
+    nginx.ingress.kubernetes.io/proxy-body-size: "0",
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  }
+  tlsSecretName: atla-omeka-staging-tls
+
+env:
+  configmap:
+    DB_HOST: atla-omeka-staging-mariadb@atla-omeka-staging.svc.local.cluster
+    DB_NAME: omeka
+    DB_PASSWORD: $DB_PASSWORD
+    DB_PORT: 3306
+    DB_USERNAME: omeka
+    MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+
+mariadb:
+  enabled: true
+  auth:
+    rootPassword: $MYSQL_ROOT_PASSWORD
+    database: omeka
+    password: $DB_PASSWORD
+    username: omeka
+  primary:
+    persistence:
+      enabled: true
+      size: 20Gi
+  secondary:
+    replicaCount: 0

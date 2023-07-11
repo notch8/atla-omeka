@@ -5,13 +5,15 @@ services:
     build:
       context: .
       target: web
+    image: ghcr.io/scientist-softserv/atla-omeka:${TAG:-latest}
     env_file:
       - .env
     environment:
-      - DB_HOST=mariadb
-      - DB_USERNAME=${DB_USERNAME}
-      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST}
       - DB_NAME=${DB_NAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PORT=${DB_PORT}
     volumes:
       - ./:/var/www/html
     ports:
@@ -27,8 +29,8 @@ services:
     env_file:
       - .env
     environment:
-      - PMA_HOST=mariadb
-      - PMA_PORT=3306
+      - PMA_HOST=${DB_HOST}
+      - PMA_PORT=${DB_PORT}
     depends_on:
       - mariadb
 
@@ -37,13 +39,12 @@ services:
     env_file:
       - .env
     environment:
-      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
       - MYSQL_DATABASE=${DB_NAME}
-      - MYSQL_USER=${DB_USERNAME}
       - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${DB_USERNAME}
     volumes:
       - db_data:/var/lib/mysql
-      # - ./omeka.sql:./omeka.sql
 
 volumes:
   db_data:
