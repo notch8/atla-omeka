@@ -1,9 +1,0 @@
-#!/usr/bin/env ruby
-
-Dir.chdir("#{__dir__}/..")
-Dir.glob("*-values.yaml.enc") do |file|
-    filename_base = file.split('.')[0]
-    cmd = "keybase decrypt -i #{file} -o #{filename_base}.yaml"
-    puts cmd
-    %x{#{cmd}}
-end
