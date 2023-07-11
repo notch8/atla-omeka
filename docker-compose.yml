@@ -10,9 +10,9 @@ services:
       - .env
     environment:
       - DB_HOST=${DB_HOST}
-      - DB_USERNAME=${DB_USERNAME}
-      - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_USERNAME=${DB_USERNAME}
     volumes:
       - ./:/var/www/html
     ports:
@@ -38,10 +38,10 @@ services:
     env_file:
       - .env
     environment:
-      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
       - MYSQL_DATABASE=${DB_NAME}
-      - MYSQL_USER=${DB_USERNAME}
       - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_USER=${DB_USERNAME}
     volumes:
       - db_data:/var/lib/mysql
 

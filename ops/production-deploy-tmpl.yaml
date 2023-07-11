@@ -1,0 +1,36 @@
+# Customize the following values as needed
+
+web:
+  replicas: 1
+
+php:
+  image:
+    repository: ghcr.io/scientist-softserv/atla-omeka
+    tag: latest
+  # If using a private registry setup access via secrets
+  imagePullPolicy: IfNotPresent
+  imagePullSecrets:
+    - name: github
+  shared:
+    storage:
+      size: 20Gi
+      className: aws-efs
+
+
+env:
+  configmap:
+    NAME: omeka
+
+mariadb:
+  enabled: true
+  auth:
+    rootPassword: $MYSQL_ROOT_PASSWORD
+    database: omeka
+    password: $DB_PASSWORD
+    username: omeka
+  primary:
+    persistence:
+      enabled: true
+      size: 20Gi
+  secondary:
+    replicaCount: 0
