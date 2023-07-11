@@ -6,7 +6,7 @@ web:
 php:
   image:
     repository: ghcr.io/scientist-softserv/atla-omeka
-    tag: latest
+    # tag: latest
   # If using a private registry setup access via secrets
   imagePullPolicy: IfNotPresent
   imagePullSecrets:
@@ -34,6 +34,8 @@ env:
     DB_PASSWORD: $DB_PASSWORD
     DB_PORT: 3306
     DB_USERNAME: omeka
+    MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+    NAME: omeka
 
 mariadb:
   enabled: true
