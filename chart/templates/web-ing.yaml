@@ -30,7 +30,7 @@ spec:
             port:
               name: http
           {{- end }}
-        path: /
+        path: /exhibitions
         pathType: ImplementationSpecific
   {{- end }}
   {{- if .Values.ingress.tlsSecretName }}
