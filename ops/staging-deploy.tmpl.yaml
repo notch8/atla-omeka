@@ -29,7 +29,7 @@ ingress:
 
 env:
   configmap:
-    DB_HOST: atla-omeka-staging-mariadb@atla-omeka-staging.svc.local.cluster
+    DB_HOST: atla-omeka-staging-mariadb
     DB_NAME: omeka
     DB_PASSWORD: $DB_PASSWORD
     DB_PORT: 3306
