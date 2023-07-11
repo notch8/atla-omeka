@@ -27,7 +27,7 @@ services:
     env_file:
       - .env
     environment:
-      - PMA_HOST=${PMA_HOST}
+      - PMA_HOST=${DB_HOST}
       - PMA_PORT=${PMA_PORT}
     depends_on:
       - mariadb

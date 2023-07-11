@@ -11,7 +11,7 @@
 /vendor/
 
 # Composer lockfile
-/composer.lock
+# /composer.lock
 
 # Config files
 # /db.ini
