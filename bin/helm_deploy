@@ -14,6 +14,7 @@ environment="$(echo "$release_name" | awk -F'-' '{print $NF}')"
 DEPLOY_IMAGE="${DEPLOY_IMAGE:-ghcr.io/scientist-softserv/arce}"
 SOLR_IMAGE="${SOLR_IMAGE:-ghcr.io/scientist-softserv/arce/solr}"
 DEPLOY_TAG="${DEPLOY_TAG:-latest}"
+echo "$DEPLOY_TAG"
 
 deploy_file="${environment}-deploy"
 ENV_FILE="./.env.${environment}"
@@ -23,8 +24,8 @@ if [ ! -f "$ENV_FILE" ]; then
   echo "$ENCODED_ENV_FILE" | base64 -d > "./.env.${environment}"
 else
   HELM_EXTRA_ARGS="--values ops/${deploy_file}.yaml"
-  DEPLOY_TAG=4e039838
-  DRY_RUN_DEBUG="--dry-run --debug"
+  # DEPLOY_TAG=SET_ME
+  # DRY_RUN_DEBUG="--dry-run --debug"
 fi
 
 # Take the env file and export each key-value pair
