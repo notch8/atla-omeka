@@ -10,7 +10,6 @@ namespace="${2}"
 
 DEPLOY_IMAGE="${DEPLOY_IMAGE:-ghcr.io/scientist-softserv/atla-omeka}"
 DEPLOY_TAG="${DEPLOY_TAG:-latest}"
-echo "$DEPLOY_TAG"
 
 helm upgrade \
     --install \
