@@ -16,9 +16,25 @@ php:
       size: 20Gi
       className: aws-efs
 
+ingress:
+  enabled: true
+  hosts:
+    - atla-omeka-production.notch8.cloud
+    - dl.atla.com
+  annotations: {
+    kubernetes.io/ingress.class: "nginx",
+    nginx.ingress.kubernetes.io/proxy-body-size: "0",
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  }
+  tlsSecretName: atla-omeka-production-tls
 
 env:
   configmap:
+    DB_HOST: atla-omeka-production-mariadb
+    DB_NAME: omeka
+    DB_PASSWORD: $DB_PASSWORD
+    DB_PORT: 3306
+    DB_USERNAME: omeka
     NAME: omeka
 
 mariadb:
