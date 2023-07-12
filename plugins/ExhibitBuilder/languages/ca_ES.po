@@ -5,16 +5,16 @@
 # Translators:
 # Miquel Àngel <ma.serra@gmail.com>, 2013
 # Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2013
-# Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2013-2018
+# Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2013-2018,2021
 # Sergi Montes <sergi.blanes@gmail.com>, 2013
 # Sergi Montes <sergi.blanes@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: Omeka\n"
+"Project-Id-Version: Omeka Classic\n"
 "Report-Msgid-Bugs-To: http://github.com/omeka/plugin-ExhibitBuilder/issues\n"
 "POT-Creation-Date: 2013-01-23 21:49-0500\n"
-"PO-Revision-Date: 2021-03-19 19:12+0000\n"
-"Last-Translator: John Flatness <john@zerocrates.org>\n"
+"PO-Revision-Date: 2012-01-10 19:03+0000\n"
+"Last-Translator: Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2013-2018,2021\n"
 "Language-Team: Catalan (Spain) (http://www.transifex.com/omeka/omeka/language/ca_ES/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: config_form.php:3
 msgid "Sorting Exhibits"
-msgstr "Ordenació de les exposicions"
+msgstr "Ordre de les exposicions"
 
 #: config_form.php:7
 msgid ""
@@ -34,11 +34,11 @@ msgstr "El criteri per defecte que s'utilitza per llistar les exposicions a la p
 
 #: config_form.php:9
 msgid "Alphabetical"
-msgstr ""
+msgstr "Alfabètic"
 
 #: config_form.php:9
 msgid "Recent"
-msgstr ""
+msgstr "Recent"
 
 #: controllers/ExhibitsController.php:53
 #, php-format
@@ -53,25 +53,25 @@ msgstr "Aquest ítem no s'utilitza dins aquesta exposició."
 msgid "You must specifically select a theme in order to configure it."
 msgstr "És obligatori especificar la plantilla per poder configurar-la."
 
-#: functions.php:438
+#: functions.php:442
 msgid "exhibits"
 msgstr "exposicions"
 
-#: functions.php:452 views/admin/exhibits/browse.php:2
+#: functions.php:456 views/admin/exhibits/browse.php:2
 #: views/public/exhibits/browse.php:2
 msgid "Browse Exhibits"
-msgstr "Navega per les exposicions"
+msgstr "Exposicions"
 
-#: functions.php:468 views/admin/exhibits/add.php:6
+#: functions.php:472 views/admin/exhibits/add.php:6
 #: views/admin/exhibits/edit.php:8 views/admin/exhibits/page-form.php:6
 msgid "Exhibits"
 msgstr "Exposicions"
 
-#: functions.php:641
+#: functions.php:645
 msgid "Exhibit"
 msgstr "Exposició"
 
-#: functions.php:642
+#: functions.php:646
 msgid "Exhibit Page"
 msgstr "Pàgina de l'exposició"
 
@@ -141,6 +141,14 @@ msgstr "Un bloc de text sense cap fitxer adjunt"
 msgid "Layout featuring a standalone file"
 msgstr "Disposició específica a partir d'un fitxer independent"
 
+#: models/ExhibitLayout.php:159
+msgid "Carousel"
+msgstr ""
+
+#: models/ExhibitLayout.php:160
+msgid "A carousel layout featuring file thumbnails"
+msgstr ""
+
 #: models/ExhibitPage.php:98
 msgid "A slug must be given for each page of an exhibit."
 msgstr "Cal proporcionar un identificador per a cada pàgina d'una exposició"
@@ -187,11 +195,11 @@ msgstr "Bloc"
 msgid "Expand/Collapse"
 msgstr "Desplega/Replega"
 
-#: views/admin/exhibits/browse.php:8
+#: views/admin/exhibits/browse.php:9
 msgid "There are no exhibits yet."
 msgstr "Encara no hi ha exposicions."
 
-#: views/admin/exhibits/browse.php:11 views/admin/exhibits/browse.php:19
+#: views/admin/exhibits/browse.php:12 views/admin/exhibits/browse.php:19
 msgid "Add an Exhibit"
 msgstr "Afegeix una exposició"
 
@@ -200,7 +208,7 @@ msgstr "Afegeix una exposició"
 msgid "Theme"
 msgstr "Plantilla"
 
-#: views/admin/exhibits/browse.php:63
+#: views/admin/exhibits/browse.php:67
 #: views/admin/exhibits/exhibit-metadata-form.php:52
 msgid "Current Public Theme"
 msgstr "Plantilla actual del repositori"
@@ -275,21 +283,21 @@ msgid "Choose a Cover Image"
 msgstr "Trieu una imatge de portada"
 
 #: views/admin/exhibits/exhibit-metadata-form.php:120
-#: views/admin/exhibits/page-form.php:97
+#: views/admin/exhibits/page-form.php:99
 msgid "Show Search Form"
 msgstr "Mostra el formulari de cerca"
 
 #: views/admin/exhibits/exhibit-metadata-form.php:121
-#: views/admin/exhibits/page-form.php:98
+#: views/admin/exhibits/page-form.php:100
 msgid "Hide Search Form"
 msgstr "Amaga el formulari de cerca"
 
-#: views/admin/exhibits/exhibit-metadata-form.php:134
-#: views/admin/exhibits/page-form.php:111
+#: views/admin/exhibits/exhibit-metadata-form.php:133
+#: views/admin/exhibits/page-form.php:112
 msgid "Change Selected Item"
 msgstr "Canvia l'ítem seleccionat"
 
-#: views/admin/exhibits/exhibit-metadata-form.php:139
+#: views/admin/exhibits/exhibit-metadata-form.php:138
 msgid "Choose"
 msgstr "Trieu"
 
@@ -318,48 +326,44 @@ msgstr "Identificador de la pàgina"
 msgid "Content"
 msgstr "Contingut"
 
-#: views/admin/exhibits/page-form.php:46
-msgid "Collapse All"
-msgstr "Replega tot"
-
 #: views/admin/exhibits/page-form.php:47
 msgid "Expand All"
 msgstr "Desplega tot"
 
 #: views/admin/exhibits/page-form.php:48
+msgid "Collapse All"
+msgstr "Replega tot"
+
+#: views/admin/exhibits/page-form.php:50
 msgid ""
 "To reorder blocks and items, click and drag them to the preferred location."
 msgstr "Per reordenar blocs i ítems, feu clic i arrossegueu-los a la ubicació que preferiu."
 
-#: views/admin/exhibits/page-form.php:56
+#: views/admin/exhibits/page-form.php:58
 msgid "New Block"
 msgstr "Nou bloc"
 
-#: views/admin/exhibits/page-form.php:58
+#: views/admin/exhibits/page-form.php:60
 msgid "Select layout"
 msgstr "Seleccioneu la maquetació"
 
-#: views/admin/exhibits/page-form.php:76
+#: views/admin/exhibits/page-form.php:78
 msgid "Add new content block"
 msgstr "Afegeix un nou bloc de contingut"
 
-#: views/admin/exhibits/page-form.php:86
+#: views/admin/exhibits/page-form.php:88
 msgid "Save and Add Another Page"
 msgstr "Desa els canvis i afegeix una nova pàgina"
 
-#: views/admin/exhibits/page-form.php:93
+#: views/admin/exhibits/page-form.php:95
 msgid "Attach an Item"
 msgstr "Adjunta un ítem"
 
-#: views/admin/exhibits/page-form.php:95
-msgid "Revert to Selected Item"
-msgstr "Restableix l'ítem seleccionat"
-
-#: views/admin/exhibits/page-form.php:115
+#: views/admin/exhibits/page-form.php:116
 msgid "Provide a caption."
 msgstr "Consigneu un text de llegenda."
 
-#: views/admin/exhibits/page-form.php:122
+#: views/admin/exhibits/page-form.php:123
 msgid "Apply"
 msgstr "Aplica"
 
@@ -384,11 +388,15 @@ msgstr "L'Omeka utilitzarà la primera imatge adjunta com a imatge de portada."
 msgid "Change"
 msgstr "Canvia"
 
-#: views/admin/items/browse.php:8
+#: views/admin/items/browse.php:7
+msgid "Clear Filters"
+msgstr ""
+
+#: views/admin/items/browse.php:9
 msgid "add some items"
 msgstr "afegeix alguns ítems"
 
-#: views/admin/items/browse.php:8
+#: views/admin/items/browse.php:9
 #, php-format
 msgid "There are no items to choose from.  Please refine your search or %s."
 msgstr "No hi ha continguts per seleccionar. Reformuleu la vostra cerca %s."
@@ -401,17 +409,54 @@ msgstr "Selecciona un ítem"
 msgid "There are no exhibits available yet."
 msgstr "Encara no hi ha cap exposició disponible."
 
+#: views/shared/exhibit_layouts/carousel/form.php:12
 #: views/shared/exhibit_layouts/file-text/form.php:17
 #: views/shared/exhibit_layouts/file/form.php:12
 #: views/shared/exhibit_layouts/gallery/form.php:17
 msgid "Layout Options"
 msgstr "Opcions de maquetació"
 
-#: views/shared/exhibit_layouts/file-text/form.php:22
-#: views/shared/exhibit_layouts/file/form.php:17
-msgid "File position"
-msgstr "Posició dels fitxers"
+#: views/shared/exhibit_layouts/carousel/form.php:17
+msgid "Carousel title"
+msgstr ""
 
+#: views/shared/exhibit_layouts/carousel/form.php:26
+msgid "Items per slide"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:46
+msgid "Item file size"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:54
+msgid "Full Size"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:60
+msgid "Show item title"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:69
+msgid "Overlay caption"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:75
+msgid "Place caption over image (may require adjusting CSS settings)"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:79
+msgid "Caption/title position"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:84
+#: views/shared/exhibit_layouts/file-text/form.php:49
+#: views/shared/exhibit_layouts/file/form.php:21
+#: views/shared/exhibit_layouts/file/form.php:44
+#: views/shared/exhibit_layouts/gallery/form.php:69
+msgid "Center"
+msgstr "Centrat"
+
+#: views/shared/exhibit_layouts/carousel/form.php:85
 #: views/shared/exhibit_layouts/file-text/form.php:26
 #: views/shared/exhibit_layouts/file-text/form.php:50
 #: views/shared/exhibit_layouts/file/form.php:21
@@ -422,6 +467,7 @@ msgstr "Posició dels fitxers"
 msgid "Left"
 msgstr "Esquerra"
 
+#: views/shared/exhibit_layouts/carousel/form.php:86
 #: views/shared/exhibit_layouts/file-text/form.php:26
 #: views/shared/exhibit_layouts/file-text/form.php:51
 #: views/shared/exhibit_layouts/file/form.php:21
@@ -431,6 +477,62 @@ msgstr "Esquerra"
 #: views/shared/exhibit_layouts/gallery/form.php:71
 msgid "Right"
 msgstr "Dreta"
+
+#: views/shared/exhibit_layouts/carousel/form.php:92
+msgid "Stretch image to fill"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:97
+msgid "None"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:98
+msgid "Fill width"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:99
+msgid "Fill height"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:100
+msgid "Fill entire slide"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:106
+msgid "Scrolling speed"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:113
+msgid ""
+"Sets the speed for the scrolling animation. May be \"fast\", \"slow\", or a "
+"time in milliseconds. Default is 400."
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:117
+msgid "Auto slide duration"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:123
+msgid ""
+"Time in milliseconds to pause before auto advance (set to 0 to turn off)"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:127
+msgid "Loop"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:136
+msgid "Fade between slides"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:142
+msgid "Note: only works with 1 item per slide"
+msgstr ""
+
+#: views/shared/exhibit_layouts/file-text/form.php:22
+#: views/shared/exhibit_layouts/file/form.php:17
+msgid "File position"
+msgstr "Posició dels fitxers"
 
 #: views/shared/exhibit_layouts/file-text/form.php:31
 #: views/shared/exhibit_layouts/file/form.php:26
@@ -442,13 +544,6 @@ msgstr "Mida del fitxer"
 #: views/shared/exhibit_layouts/gallery/form.php:64
 msgid "Captions position"
 msgstr "Posició dels textos de llegenda"
-
-#: views/shared/exhibit_layouts/file-text/form.php:49
-#: views/shared/exhibit_layouts/file/form.php:21
-#: views/shared/exhibit_layouts/file/form.php:44
-#: views/shared/exhibit_layouts/gallery/form.php:69
-msgid "Center"
-msgstr "Centrat"
 
 #: views/shared/exhibit_layouts/gallery/form.php:22
 msgid "Showcase file position"
