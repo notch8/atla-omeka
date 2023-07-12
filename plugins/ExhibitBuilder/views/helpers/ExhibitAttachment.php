@@ -16,22 +16,21 @@ class ExhibitBuilder_View_Helper_ExhibitAttachment extends Zend_View_Helper_Abst
      * @param boolean $forceImage Whether to display the attachment as an image
      *  always Defaults to false.
      * @return string
-     */
-    public function exhibitAttachment($attachment, $fileOptions = array(), $linkProps = array(), $forceImage = false)
+     */ 
+    public function exhibitAttachment($attachment, $fileOptions = array(), $linkProps = array(), $forceImage = false, $showTitle = false)
     {
         $item = $attachment->getItem();
         $file = $attachment->getFile();
-        
+
         if ($file) {
-            if (!isset($fileOptions['imgAttributes']['alt'])) {
-                $fileOptions['imgAttributes']['alt'] = metadata($item, array('Dublin Core', 'Title'), array('no_escape' => true));
-            }
-            
             if ($forceImage) {
                 $imageSize = isset($fileOptions['imageSize'])
                     ? $fileOptions['imageSize']
                     : 'square_thumbnail';
-                $image = file_image($imageSize, $fileOptions['imgAttributes'], $file);
+                $imageAttr = isset($fileOptions['imgAttributes'])
+                    ? $fileOptions['imgAttributes']
+                    : array();
+                $image = file_image($imageSize, $imageAttr, $file);
                 $html = exhibit_builder_link_to_exhibit_item($image, $linkProps, $item);
             } else {
                 if (!isset($fileOptions['linkAttributes']['href'])) {
@@ -43,9 +42,18 @@ class ExhibitBuilder_View_Helper_ExhibitAttachment extends Zend_View_Helper_Abst
             $html = exhibit_builder_link_to_exhibit_item(null, $linkProps, $item);
         }
 
+
         // Don't show a caption if we couldn't show the Item or File at all
         if (isset($html)) {
-            $html .= $this->view->exhibitAttachmentCaption($attachment);
+            $captionHtml = $this->view->exhibitAttachmentCaption($attachment);
+            if ($showTitle || $captionHtml !== '') {
+                $html .= '<div class="slide-meta">';
+                if ($showTitle) {
+                    $html .= '<p class="slide-title">' . exhibit_builder_link_to_exhibit_item(null, $linkProps, $item) . '</p>';
+                }
+                $html .= $captionHtml;
+                $html .= '</div>';
+            }
         } else {
             $html = '';
         }

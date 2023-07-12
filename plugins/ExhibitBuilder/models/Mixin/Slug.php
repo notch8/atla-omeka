@@ -4,10 +4,10 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
  * @package ExhibitBuilder
  */
-
+ 
 /**
  * Mixin for "sluggable" records.
- *
+ * 
  * The only requirement for a record to use this mixin is that it needs a
  * field named 'slug'.
  *
@@ -15,8 +15,9 @@
  */
 class Mixin_Slug extends Omeka_Record_Mixin_AbstractMixin
 {
-    protected $parentFields = array();
-    protected $options;
+    public $options;
+
+    private $_parentFields;
 
     function __construct($record, $options = array())
     {
@@ -25,28 +26,27 @@ class Mixin_Slug extends Omeka_Record_Mixin_AbstractMixin
         $defaultOptions = array(
             'parentFields' => array(),
             'slugMaxLength' => 30,
-            'slugSeedFieldName' => 'title'
-        );
+            'slugSeedFieldName' => 'title');
 
         $errorMsgs = array(
             'slugEmptyErrorMessage' => 'Slug must be provided.',
             'slugLengthErrorMessage' => 'Slug must not be more than ' . $defaultOptions['slugMaxLength'] . ' characters.',
-            'slugUniqueErrorMessage' => 'Slug must be unique.'
-        );
+            'slugUniqueErrorMessage' => 'Slug must be unique.');
 
+        // Options passed in will override the defaults.
         $this->options = array_merge($defaultOptions, $errorMsgs, $options);
 
-        $this->parentFields = $this->options['parentFields'];
+        $this->_parentFields = $this->options['parentFields'];
 
         $this->_record = $record;
     }
 
-    private function filterByParents($select)
+    private function _filterByParents($select)
     {
-        if ($this->parentFields) {
-            foreach ($this->parentFields as $field) {
+        if ($this->_parentFields) {
+            foreach ($this->_parentFields as $field) {
                 $parentId = $this->_record->{$field};
-                if ($parentId) {
+                if($parentId) {
                     $select->where($field . ' = ?', $parentId);
                 } else {
                     $select->where($field . ' IS NULL');
@@ -67,15 +67,15 @@ class Mixin_Slug extends Omeka_Record_Mixin_AbstractMixin
         }
         $this->_record->slug = self::generateSlug($seedValue);
 
-        if (trim($this->_record->slug) == '') {
+        if(trim($this->_record->slug) == '') {
             $this->_record->addError('slug', $this->options['slugEmptyErrorMessage']);
         }
 
-        if (!$this->slugIsUnique($this->_record->slug)) {
+        if(!$this->slugIsUnique($this->_record->slug)) {
             $this->_record->addError('slug', $this->options['slugUniqueErrorMessage']);
         }
 
-        if (strlen($this->_record->slug) > $this->options['slugMaxLength']) {
+        if(strlen($this->_record->slug) > $this->options['slugMaxLength']) {
             $this->_record->addError('slug', $this->options['slugLengthErrorMessage']);
         }
     }
@@ -87,11 +87,40 @@ class Mixin_Slug extends Omeka_Record_Mixin_AbstractMixin
 
     public function slugIsUnique($slug)
     {
-        // ...
+        $db = $this->_record->getDb();
+
+        $table = $this->_record->getTable();
+        $tableAlias = $table->getTableAlias();
+        $select = $table->getSelect();
+        $select->reset(Zend_Db_Select::COLUMNS)->from(array(), "COUNT(DISTINCT($tableAlias.id))");
+        $select->where("$tableAlias.slug = ?", $slug);
+
+        $this->_filterByParents($select);
+
+        //If the record is persistent, get the count of pages
+        //with that slug that aren't this particular record
+        if($this->_record->exists()) {
+            $select->where("$tableAlias.id != ?", $this->_record->id);
+        }
+        //If there are no other pages with that particular slug, then it is unique
+        $count = (int) $db->fetchOne($select);
+        return ($count == 0);
     }
 
+    /**
+     * Generate a URL slug from a piece of text.
+     *
+     * Trims whitespace, replaces disallowed characters with hyphens,
+     * converts the resulting string to lowercase, and trims at 30 characters.
+     *
+     * @param string $text
+     * @return string
+     */
     public static function generateSlug($text)
     {
-        // ...
+        // Remove characters other than alphanumeric, hyphen, underscore.
+        $slug = preg_replace('/[^a-z0-9\-_]/', '-', strtolower(trim($text)));
+        // Trim down to 30 characters.
+        return substr($slug, 0, 30);
     }
 }

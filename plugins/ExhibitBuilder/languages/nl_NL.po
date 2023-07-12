@@ -9,11 +9,11 @@
 # Peter Baan <exnihilo@xs4all.nl>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: Omeka\n"
+"Project-Id-Version: Omeka Classic\n"
 "Report-Msgid-Bugs-To: http://github.com/omeka/plugin-ExhibitBuilder/issues\n"
 "POT-Creation-Date: 2013-01-23 21:49-0500\n"
-"PO-Revision-Date: 2018-02-14 19:43+0000\n"
-"Last-Translator: John Flatness <john@zerocrates.org>\n"
+"PO-Revision-Date: 2012-01-10 19:03+0000\n"
+"Last-Translator: Brian Cho <briancho@ezuserguide.com>, 2015\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/omeka/omeka/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -52,25 +52,25 @@ msgstr "Dit item wordt niet gebruikt in deze tentoonstelling."
 msgid "You must specifically select a theme in order to configure it."
 msgstr "U dient een specifiek thema te selecteren om het te kunnen configureren."
 
-#: functions.php:438
+#: functions.php:442
 msgid "exhibits"
 msgstr "tentoonstellingen"
 
-#: functions.php:452 views/admin/exhibits/browse.php:2
+#: functions.php:456 views/admin/exhibits/browse.php:2
 #: views/public/exhibits/browse.php:2
 msgid "Browse Exhibits"
 msgstr "Blader door tentoonstellingen"
 
-#: functions.php:468 views/admin/exhibits/add.php:6
+#: functions.php:472 views/admin/exhibits/add.php:6
 #: views/admin/exhibits/edit.php:8 views/admin/exhibits/page-form.php:6
 msgid "Exhibits"
 msgstr "Tentoonstellingen"
 
-#: functions.php:641
+#: functions.php:645
 msgid "Exhibit"
 msgstr "Tentoonstelling"
 
-#: functions.php:642
+#: functions.php:646
 msgid "Exhibit Page"
 msgstr "Tentoonstellingspagina"
 
@@ -140,6 +140,14 @@ msgstr "Layout met een tekstblok zonder bestanden"
 msgid "Layout featuring a standalone file"
 msgstr ""
 
+#: models/ExhibitLayout.php:159
+msgid "Carousel"
+msgstr ""
+
+#: models/ExhibitLayout.php:160
+msgid "A carousel layout featuring file thumbnails"
+msgstr ""
+
 #: models/ExhibitPage.php:98
 msgid "A slug must be given for each page of an exhibit."
 msgstr "Iedere pagina van een tentoonstelling dient een <em>slug</em> te krijgen."
@@ -186,11 +194,11 @@ msgstr "Blokkeren"
 msgid "Expand/Collapse"
 msgstr "Uitklappen/inklappen"
 
-#: views/admin/exhibits/browse.php:8
+#: views/admin/exhibits/browse.php:9
 msgid "There are no exhibits yet."
 msgstr "Er zijn nog geen tentoonstellingen."
 
-#: views/admin/exhibits/browse.php:11 views/admin/exhibits/browse.php:19
+#: views/admin/exhibits/browse.php:12 views/admin/exhibits/browse.php:19
 msgid "Add an Exhibit"
 msgstr "Voeg een tentoonstelling toe"
 
@@ -199,7 +207,7 @@ msgstr "Voeg een tentoonstelling toe"
 msgid "Theme"
 msgstr "Thema"
 
-#: views/admin/exhibits/browse.php:63
+#: views/admin/exhibits/browse.php:67
 #: views/admin/exhibits/exhibit-metadata-form.php:52
 msgid "Current Public Theme"
 msgstr "Huidige publieke thema"
@@ -274,21 +282,21 @@ msgid "Choose a Cover Image"
 msgstr ""
 
 #: views/admin/exhibits/exhibit-metadata-form.php:120
-#: views/admin/exhibits/page-form.php:97
+#: views/admin/exhibits/page-form.php:99
 msgid "Show Search Form"
 msgstr "Zoekformulier weergeven"
 
 #: views/admin/exhibits/exhibit-metadata-form.php:121
-#: views/admin/exhibits/page-form.php:98
+#: views/admin/exhibits/page-form.php:100
 msgid "Hide Search Form"
 msgstr "Zoekformulier verbergen"
 
-#: views/admin/exhibits/exhibit-metadata-form.php:134
-#: views/admin/exhibits/page-form.php:111
+#: views/admin/exhibits/exhibit-metadata-form.php:133
+#: views/admin/exhibits/page-form.php:112
 msgid "Change Selected Item"
 msgstr "Geselecteerd item wijzigen"
 
-#: views/admin/exhibits/exhibit-metadata-form.php:139
+#: views/admin/exhibits/exhibit-metadata-form.php:138
 msgid "Choose"
 msgstr ""
 
@@ -317,48 +325,44 @@ msgstr "Paginaslug"
 msgid "Content"
 msgstr "Inhoud"
 
-#: views/admin/exhibits/page-form.php:46
-msgid "Collapse All"
-msgstr "Alles inklappen"
-
 #: views/admin/exhibits/page-form.php:47
 msgid "Expand All"
 msgstr "Alles uitvouwen"
 
 #: views/admin/exhibits/page-form.php:48
+msgid "Collapse All"
+msgstr "Alles inklappen"
+
+#: views/admin/exhibits/page-form.php:50
 msgid ""
 "To reorder blocks and items, click and drag them to the preferred location."
 msgstr "Om blokken en items opnieuw te ordenen, klik en sleep de ze omhoog of omlaag naar de gewenste locatie."
 
-#: views/admin/exhibits/page-form.php:56
+#: views/admin/exhibits/page-form.php:58
 msgid "New Block"
 msgstr "Nieuw blok"
 
-#: views/admin/exhibits/page-form.php:58
+#: views/admin/exhibits/page-form.php:60
 msgid "Select layout"
 msgstr "Lay-out kiezen"
 
-#: views/admin/exhibits/page-form.php:76
+#: views/admin/exhibits/page-form.php:78
 msgid "Add new content block"
 msgstr "Nieuw contentblok toevoegen"
 
-#: views/admin/exhibits/page-form.php:86
+#: views/admin/exhibits/page-form.php:88
 msgid "Save and Add Another Page"
 msgstr "Opslaan en nog een pagina toevoegen"
 
-#: views/admin/exhibits/page-form.php:93
+#: views/admin/exhibits/page-form.php:95
 msgid "Attach an Item"
 msgstr "Voeg een item bij."
 
-#: views/admin/exhibits/page-form.php:95
-msgid "Revert to Selected Item"
-msgstr "Terugzetten naar gekozen item"
-
-#: views/admin/exhibits/page-form.php:115
+#: views/admin/exhibits/page-form.php:116
 msgid "Provide a caption."
 msgstr "Een titel toevoegen"
 
-#: views/admin/exhibits/page-form.php:122
+#: views/admin/exhibits/page-form.php:123
 msgid "Apply"
 msgstr "Toepassen"
 
@@ -383,11 +387,15 @@ msgstr ""
 msgid "Change"
 msgstr ""
 
-#: views/admin/items/browse.php:8
+#: views/admin/items/browse.php:7
+msgid "Clear Filters"
+msgstr ""
+
+#: views/admin/items/browse.php:9
 msgid "add some items"
 msgstr "enkele items toevoegen"
 
-#: views/admin/items/browse.php:8
+#: views/admin/items/browse.php:9
 #, php-format
 msgid "There are no items to choose from.  Please refine your search or %s."
 msgstr "Er zijn geen items om uit te kiezen. Verfijn uw zoekopdracht of %s."
@@ -400,17 +408,54 @@ msgstr "Item selecteren"
 msgid "There are no exhibits available yet."
 msgstr "Er zijn nog geen tentoonstellingen beschikbaar."
 
+#: views/shared/exhibit_layouts/carousel/form.php:12
 #: views/shared/exhibit_layouts/file-text/form.php:17
 #: views/shared/exhibit_layouts/file/form.php:12
 #: views/shared/exhibit_layouts/gallery/form.php:17
 msgid "Layout Options"
 msgstr "Opties voor lay-out"
 
-#: views/shared/exhibit_layouts/file-text/form.php:22
-#: views/shared/exhibit_layouts/file/form.php:17
-msgid "File position"
-msgstr "Positie bestand"
+#: views/shared/exhibit_layouts/carousel/form.php:17
+msgid "Carousel title"
+msgstr ""
 
+#: views/shared/exhibit_layouts/carousel/form.php:26
+msgid "Items per slide"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:46
+msgid "Item file size"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:54
+msgid "Full Size"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:60
+msgid "Show item title"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:69
+msgid "Overlay caption"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:75
+msgid "Place caption over image (may require adjusting CSS settings)"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:79
+msgid "Caption/title position"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:84
+#: views/shared/exhibit_layouts/file-text/form.php:49
+#: views/shared/exhibit_layouts/file/form.php:21
+#: views/shared/exhibit_layouts/file/form.php:44
+#: views/shared/exhibit_layouts/gallery/form.php:69
+msgid "Center"
+msgstr "Midden"
+
+#: views/shared/exhibit_layouts/carousel/form.php:85
 #: views/shared/exhibit_layouts/file-text/form.php:26
 #: views/shared/exhibit_layouts/file-text/form.php:50
 #: views/shared/exhibit_layouts/file/form.php:21
@@ -421,6 +466,7 @@ msgstr "Positie bestand"
 msgid "Left"
 msgstr "Links"
 
+#: views/shared/exhibit_layouts/carousel/form.php:86
 #: views/shared/exhibit_layouts/file-text/form.php:26
 #: views/shared/exhibit_layouts/file-text/form.php:51
 #: views/shared/exhibit_layouts/file/form.php:21
@@ -430,6 +476,62 @@ msgstr "Links"
 #: views/shared/exhibit_layouts/gallery/form.php:71
 msgid "Right"
 msgstr "Rechts"
+
+#: views/shared/exhibit_layouts/carousel/form.php:92
+msgid "Stretch image to fill"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:97
+msgid "None"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:98
+msgid "Fill width"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:99
+msgid "Fill height"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:100
+msgid "Fill entire slide"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:106
+msgid "Scrolling speed"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:113
+msgid ""
+"Sets the speed for the scrolling animation. May be \"fast\", \"slow\", or a "
+"time in milliseconds. Default is 400."
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:117
+msgid "Auto slide duration"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:123
+msgid ""
+"Time in milliseconds to pause before auto advance (set to 0 to turn off)"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:127
+msgid "Loop"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:136
+msgid "Fade between slides"
+msgstr ""
+
+#: views/shared/exhibit_layouts/carousel/form.php:142
+msgid "Note: only works with 1 item per slide"
+msgstr ""
+
+#: views/shared/exhibit_layouts/file-text/form.php:22
+#: views/shared/exhibit_layouts/file/form.php:17
+msgid "File position"
+msgstr "Positie bestand"
 
 #: views/shared/exhibit_layouts/file-text/form.php:31
 #: views/shared/exhibit_layouts/file/form.php:26
@@ -441,13 +543,6 @@ msgstr "Bestandsgrootte"
 #: views/shared/exhibit_layouts/gallery/form.php:64
 msgid "Captions position"
 msgstr "Positie titel"
-
-#: views/shared/exhibit_layouts/file-text/form.php:49
-#: views/shared/exhibit_layouts/file/form.php:21
-#: views/shared/exhibit_layouts/file/form.php:44
-#: views/shared/exhibit_layouts/gallery/form.php:69
-msgid "Center"
-msgstr "Midden"
 
 #: views/shared/exhibit_layouts/gallery/form.php:22
 msgid "Showcase file position"
