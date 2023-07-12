@@ -22,12 +22,12 @@ spec:
       - backend:
           {{- if $beta }}
           serviceName: {{ printf "%s" $serviceName | trunc 63 | trimSuffix "-" }}-web
-          servicePort: http
+          servicePort: 80
           {{- else }}
           service:
             name: {{ printf "%s" $serviceName | trunc 63 | trimSuffix "-" }}-web
             port:
-              name: http
+              number: 80
           {{- end }}
         path: /exhibitions
         pathType: ImplementationSpecific
