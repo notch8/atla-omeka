@@ -19,7 +19,6 @@ helm upgrade \
     --set php.image.repository="$DEPLOY_IMAGE" \
     --set php.image.tag="$DEPLOY_TAG" \
     $HELM_EXTRA_ARGS \
-    --values "ops/staging-deploy.tmpl.yaml" \
     --namespace="$namespace" \
     --create-namespace \
     "$release_name" \
