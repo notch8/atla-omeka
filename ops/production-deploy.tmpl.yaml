@@ -30,7 +30,7 @@ ingress:
 
 env:
   configmap:
-    DB_HOST: atla-omeka-production-mariadb
+    DB_HOST: omeka-production
     DB_NAME: omeka
     DB_PASSWORD: $DB_PASSWORD
     DB_PORT: 3306
