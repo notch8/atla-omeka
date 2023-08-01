@@ -20,7 +20,7 @@ ingress:
   enabled: true
   hosts:
     - dl.atla.com
-    - atla-omeka.notch8.cloud
+    - atla.notch8.cloud
   annotations: {
     kubernetes.io/ingress.class: "nginx",
     nginx.ingress.kubernetes.io/proxy-body-size: "0",
