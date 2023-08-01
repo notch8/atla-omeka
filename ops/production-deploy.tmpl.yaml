@@ -24,9 +24,7 @@ ingress:
   annotations: {
     kubernetes.io/ingress.class: "nginx",
     nginx.ingress.kubernetes.io/proxy-body-size: "0",
-    cert-manager.io/cluster-issuer: letsencrypt-prod
   }
-  tlsSecretName: notch8cloud
 
 env:
   configmap:
