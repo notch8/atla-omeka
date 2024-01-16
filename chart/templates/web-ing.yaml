@@ -32,11 +32,11 @@ spec:
         path: /exhibitions
         pathType: ImplementationSpecific
   {{- end }}
-  {{- if .Values.ingress.tlsSecretName }}
+  {{- if .Values.ingress.tls.secretName }}
   tls:
-  - secretName: {{ .Values.ingress.tlsSecretName }}
+  - secretName: {{ .Values.ingress.tls.secretName }}
     hosts:
-      {{- range .Values.ingress.hosts }}
+      {{- range .Values.ingress.tls.hosts }}
       - {{ . | quote }}
       {{- end }}
   {{- end }}
