@@ -14,18 +14,20 @@ php:
   shared:
     storage:
       size: 20Gi
-      className: nfs
+      className: aws-efs
 
 ingress:
   enabled: true
   hosts:
-    - atla-omeka-staging.notch8.cloud
+    - dl-staging.atla.com
   annotations: {
     kubernetes.io/ingress.class: "nginx",
-    nginx.ingress.kubernetes.io/proxy-body-size: "0",
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
   }
-  tlsSecretName: atla-omeka-staging-tls
+  tls:
+    - hosts:
+        - dl-staging.atla.com
+      secretName: notch8cloud
 
 env:
   configmap:
