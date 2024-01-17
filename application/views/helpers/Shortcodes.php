@@ -48,21 +48,26 @@ class Omeka_View_Helper_Shortcodes extends Zend_View_Helper_Abstract
      */
     public function shortcodes($content)
     {
-        if (false === strpos($content, '[')) {
-            return $content;
-        }
-        $pattern =
-        '/'
-        . '\['          // Opening bracket
-        . '(\w+)'       // Shortcode name
-        . '\s*'         // Ignore whitespace trailing shortcode
-        . '([^\]]*)'    // Capture attributes
-        . '\]'          // Closing bracket
-        . '/s';
+      // Ensure $content is a string before proceeding
+      if (!is_string($content)) {
+          // Handle the situation when $content is not a string, e.g., return an error or a default value
+          return ''; // or handle it in another appropriate way
+      }
 
-        return preg_replace_callback($pattern, array($this, 'handleShortcode'), $content);
-    }
+      if (false === strpos($content, '[')) {
+          return $content;
+      }
+      $pattern =
+      '/'
+      . '\['          // Opening bracket
+      . '(\w+)'       // Shortcode name
+      . '\s*'         // Ignore whitespace trailing shortcode
+      . '([^\]]*)'    // Capture attributes
+      . '\]'          // Closing bracket
+      . '/s';
 
+      return preg_replace_callback($pattern, array($this, 'handleShortcode'), $content);
+  }
     /**
      * Parse a detected shortcode and replace it with its actual content.
      *
