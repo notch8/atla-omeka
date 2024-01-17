@@ -14,7 +14,7 @@ php:
   shared:
     storage:
       size: 20Gi
-      className: nfs
+      className: aws-efs
 
 ingress:
   enabled: true
