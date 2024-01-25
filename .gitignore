@@ -49,3 +49,4 @@ omeka.sql
 
 .env.*
 *deploy.yaml
+.git/
