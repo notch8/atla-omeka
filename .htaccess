@@ -11,7 +11,7 @@
 # Note: This should only be enabled for development or debugging. Keep this
 # line commented for production sites.
 #
- SetEnv APPLICATION_ENV development
+#  SetEnv APPLICATION_ENV production
 
 # ------------- #
 # Rewrite Rules #
@@ -73,4 +73,8 @@ Header set strict-transport-security: "max-age=31536000; includeSubDomains"
 <IfModule mod_php5.c>
     php_flag register_globals off
     php_flag magic_quotes_gpc off
+    php_value display_errors 0
+    php_value display_startup_errors 0
+    php_flag log_errors on
+    php_value error_log /var/log/apache2/error.log
 </IfModule>

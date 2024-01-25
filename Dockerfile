@@ -1,4 +1,4 @@
-FROM php:8.2.7-apache as web
+FROM php:8.2.15-apache as web
 
 RUN a2enmod rewrite
 RUN a2enmod headers
