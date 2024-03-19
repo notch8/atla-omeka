@@ -41,7 +41,7 @@ env:
 mariadb:
   enabled: true
   auth:
-    rootPassword: $MYSQL_ROOT_PASSWORD
+    existingSecret: "atla-omeka-production-mariadb"
     database: omeka
     password: $DB_PASSWORD
     username: omeka
