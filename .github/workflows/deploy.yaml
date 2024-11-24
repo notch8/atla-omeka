@@ -99,7 +99,7 @@ jobs:
           export DEPLOY_IMAGE=ghcr.io/${REPO_LOWER};
           export WORKER_IMAGE=ghcr.io/${REPO_LOWER}/worker;
           export SOLR_IMAGE=ghcr.io/${REPO_LOWER}/solr;
-          ./bin/helm_deploy ${{ inputs.environment || format('{0}-{1}', github.event.repository.name, inputs.environment) }} ${{ inputs.environment || format('{0}-{1}', github.event.repository.name, inputs.environment) }}
+          ./bin/helm_deploy ${{ format('{0}-{1}', github.event.repository.name, inputs.environment) }} ${{ format('{0}-{1}', github.event.repository.name, inputs.environment) }}
       - name: Do deploy
         if: ${{ inputs.deploy-solr-image }} == 'false'
         run: |
@@ -108,4 +108,4 @@ jobs:
           export DEPLOY_TAG=${TAG};
           export DEPLOY_IMAGE=ghcr.io/${REPO_LOWER};
           export WORKER_IMAGE=ghcr.io/${REPO_LOWER}/worker;
-          ./bin/helm_deploy ${{ inputs.environment || format('{0}-{1}', github.event.repository.name, inputs.environment) }} ${{ inputs.environment || format('{0}-{1}', github.event.repository.name, inputs.environment) }}
+          ./bin/helm_deploy ${{ format('{0}-{1}', github.event.repository.name, inputs.environment) }} ${{ format('{0}-{1}', github.event.repository.name, inputs.environment) }}
