@@ -25,7 +25,6 @@ env:
 jobs:
   deployment:
     runs-on: ubuntu-latest
-    container: dtzar/helm-kubectl:3.9.4
     environment: ${{ inputs.environment }}
     env:
       HELM_EXPERIMENTAL_OCI: 1
