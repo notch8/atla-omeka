@@ -5,7 +5,7 @@ services:
     build:
       context: .
       target: web
-    image: ghcr.io/scientist-softserv/atla-omeka:${TAG:-latest}
+    image: ghcr.io/notch8/atla-omeka:${TAG:-latest}
     env_file:
       - .env
     environment:

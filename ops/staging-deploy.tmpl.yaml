@@ -5,7 +5,7 @@ web:
 
 php:
   image:
-    repository: ghcr.io/scientist-softserv/atla-omeka
+    repository: ghcr.io/notch8/atla-omeka
     tag: latest
   # If using a private registry setup access via secrets
   imagePullPolicy: IfNotPresent
